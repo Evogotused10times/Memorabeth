@@ -31,7 +31,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-secondary-light dark:bg-secondary-dark font-sans">
+  <div
+    class="min-h-screen bg-secondary-light dark:bg-secondary-dark font-sans flex flex-col"
+  >
     <nav class="bg-primary text-white p-4 shadow-lg">
       <div class="container mx-auto flex justify-between items-center">
         <h1 class="text-2xl font-display font-bold">MemoraBeth</h1>
@@ -92,7 +94,7 @@ onMounted(() => {
         </div>
       </div>
     </nav>
-    <main class="container mx-auto p-4">
+    <main class="container mx-auto p-4 flex-grow">
       <div
         v-if="showToast"
         class="fixed top-4 right-4 bg-success text-white px-4 py-2 rounded-lg shadow-lg animate-fade-in"
@@ -101,5 +103,43 @@ onMounted(() => {
       </div>
       <slot />
     </main>
+    <footer class="bg-primary text-white p-4">
+      <div class="container mx-auto flex justify-center space-x-6">
+        <a
+          href="https://facebook.com/bethanymemorialpark"
+          target="_blank"
+          class="hover:text-accent transition-colors"
+        >
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.992 22 12z"
+            />
+          </svg>
+        </a>
+        <a
+          href="mailto:info@bethanymemorialpark.com"
+          class="hover:text-accent transition-colors"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            />
+          </svg>
+        </a>
+        <a href="tel:+639123456789" class="hover:text-accent transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+            />
+          </svg>
+        </a>
+      </div>
+    </footer>
   </div>
 </template>

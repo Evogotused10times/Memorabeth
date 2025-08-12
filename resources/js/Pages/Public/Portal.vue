@@ -1,29 +1,10 @@
 <script setup>
 import { ref } from "vue";
-import { Link, useForm } from "@inertiajs/vue3";
+import { Link } from "@inertiajs/vue3";
 import AppLayout from "../../Components/AppLayout.vue";
 
 const props = defineProps(["records", "searchQuery"]);
 const searchQuery = ref(props.searchQuery || "");
-const applicationForm = useForm({
-  applicant_name: "",
-  applicant_email: "",
-  applicant_phone: "",
-  deceased_name: "",
-  file: null,
-});
-const errors = ref({});
-
-const submitApplication = () => {
-  applicationForm.post("/applications", {
-    onSuccess: () => {
-      applicationForm.reset();
-    },
-    onError: (err) => {
-      errors.value = err;
-    },
-  });
-};
 </script>
 
 <template>
@@ -68,66 +49,12 @@ const submitApplication = () => {
           </li>
         </ul>
       </div>
-      <div
-        class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-xs p-6 rounded-xl shadow-neumorphic animate-fade-in"
-      >
-        <h3
-          class="text-xl font-display font-semibold text-gray-800 dark:text-gray-200 mb-4"
+      <div class="text-center">
+        <Link
+          href="/public/application"
+          class="inline-block px-6 py-3 bg-primary text-white rounded-lg shadow-neumorphic hover:bg-accent transition-all duration-300 animate-scale-up"
+          >Apply for Burial Services</Link
         >
-          Apply for Burial Services
-        </h3>
-        <div class="space-y-4">
-          <div>
-            <input
-              v-model="applicationForm.applicant_name"
-              placeholder="Your Name"
-              class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-accent"
-            />
-            <p v-if="errors.applicant_name" class="text-error text-sm mt-1">
-              {{ errors.applicant_name }}
-            </p>
-          </div>
-          <div>
-            <input
-              v-model="applicationForm.applicant_email"
-              placeholder="Your Email"
-              class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-accent"
-            />
-            <p v-if="errors.applicant_email" class="text-error text-sm mt-1">
-              {{ errors.applicant_email }}
-            </p>
-          </div>
-          <input
-            v-model="applicationForm.applicant_phone"
-            placeholder="Your Phone (optional)"
-            class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-accent"
-          />
-          <div>
-            <input
-              v-model="applicationForm.deceased_name"
-              placeholder="Deceased Name"
-              class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-accent"
-            />
-            <p v-if="errors.deceased_name" class="text-error text-sm mt-1">
-              {{ errors.deceased_name }}
-            </p>
-          </div>
-          <div>
-            <input
-              type="file"
-              @change="applicationForm.file = $event.target.files[0]"
-              accept=".pdf,.jpg,.png"
-              class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-accent"
-            />
-            <p v-if="errors.file" class="text-error text-sm mt-1">{{ errors.file }}</p>
-          </div>
-          <button
-            @click="submitApplication"
-            class="w-full px-6 py-3 bg-primary text-white rounded-lg shadow-neumorphic hover:bg-accent transition-all duration-300 animate-scale-up"
-          >
-            Submit Application
-          </button>
-        </div>
       </div>
     </div>
   </AppLayout>

@@ -7,6 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Application extends Model
 {
-    /** @use HasFactory<\Database\Factories\ApplicationFactory> */
-    use HasFactory;
+    protected $fillable = ['applicant_name', 'applicant_email', 'applicant_phone', 'deceased_name', 'file_path', 'status'];
 }

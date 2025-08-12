@@ -1,3 +1,4 @@
+/** * File: resources/js/Pages/Welcome.vue */
 <script setup>
 import AppLayout from "../Components/AppLayout.vue";
 import { Link } from "@inertiajs/vue3";

@@ -1,3 +1,4 @@
+/** * File: resources/js/Pages/Admin/Dashboard.vue */
 <script setup>
 import { ref, onMounted } from "vue";
 import { Link, usePage } from "@inertiajs/vue3";

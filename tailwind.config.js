@@ -1,6 +1,3 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
-import forms from '@tailwindcss/forms';
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: ['./resources/**/*.{vue,js,blade.php}'],
@@ -43,5 +40,5 @@ module.exports = {
         },
     },
     plugins: [],
-    darkMode: 'class', // Enable dark mode with class-based toggle
+    darkMode: 'class',
 };

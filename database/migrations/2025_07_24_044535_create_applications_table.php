@@ -11,8 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // database/migrations/XXXX_create_applications_table.php
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
+            $table->string('applicant_name');
+            $table->string('applicant_email');
+            $table->string('applicant_phone')->nullable();
+            $table->string('deceased_name');
+            $table->string('file_path');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }
