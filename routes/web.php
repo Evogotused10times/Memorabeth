@@ -5,6 +5,7 @@ use App\Http\Controllers\BurialRecordController;
 use App\Http\Controllers\PublicPortalController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AdminApplicationsController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Inertia\Inertia;
 
 require __DIR__.'/auth.php';
@@ -26,3 +27,12 @@ Route::get('/public/search', [PublicPortalController::class, 'search'])->name('p
 Route::get('/public/memorial/{id}', [PublicPortalController::class, 'memorial'])->name('public.memorial');
 Route::get('/public/application', [ApplicationController::class, 'index'])->name('public.application');
 Route::post('/applications', [ApplicationController::class, 'store'])->name('applications.store');
+Route::get('/login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'create'])->name('login');
+Route::post('/login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'store'])->name('login');
+
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth')->name('logout');
+
+
+Route::get('/admin', function () {
+    return Inertia::render('Admin/Dashboard');
+})->middleware('auth')->name('admin.dashboard');

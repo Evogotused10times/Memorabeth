@@ -11,15 +11,30 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // database/migrations/XXXX_create_applications_table.php
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
+
             $table->string('applicant_name');
-            $table->string('applicant_email');
-            $table->string('applicant_phone')->nullable();
-            $table->string('deceased_name');
-            $table->string('file_path');
+            $table->string('address');
+            $table->string('cellphone_no')->nullable();
+            $table->string('email')->nullable();
+            $table->string('facebook_messenger')->nullable();
+            $table->string('next_of_kin');
+
+            $table->json('lots')->nullable();
+
+            $table->text('terms')->nullable();
+            $table->text('remarks')->nullable();
+
+            $table->string('purchaser_name');
+            $table->boolean('signature_agreement')->default(false);
+            $table->string('agent_name');
+            $table->date('date');
+
+            $table->string('file_path')->nullable();
+
             $table->string('status')->default('pending');
+
             $table->timestamps();
         });
     }
